@@ -60,7 +60,31 @@ a:hover { color: var(--light-color); }
     transform: translateY(0);
 }
 
-#hero { text-align: center; }
+/* --- SEKCJA HERO Z TŁEM --- */
+#hero { 
+    text-align: center;
+    position: relative;
+    background-image: url('background-hero.jpg'); /* Tło dla sekcji Hero */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* Zapobiega "wylewaniu się" pseudo-elementu */
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(42, 51, 60, 0.8); /* Półprzezroczysta nakładka dla czytelności */
+    z-index: 0;
+}
+
+#hero > .inner {
+    position: relative; /* Ustawia tekst nad nakładką */
+    z-index: 1;
+}
 
 /* --- PRZYCISKI I AKCJE --- */
 .button {
@@ -102,6 +126,31 @@ a:hover { color: var(--light-color); }
 #services .item h3 {
     font-size: 1.2em;
     margin-bottom: 0.5rem;
+}
+
+/* --- SEKCJA KONTAKT Z TŁEM --- */
+#contact.panel {
+    position: relative;
+    background-image: url('background-contact.jpg'); /* Tło dla sekcji Kontakt */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+#contact.panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(33, 41, 49, 0.85); /* Ciemniejsza nakładka dla kontrastu */
+    z-index: 0;
+}
+
+#contact.panel > .inner {
+    position: relative;
+    z-index: 1;
 }
 
 /* --- FORMULARZ --- */
