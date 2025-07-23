@@ -6,7 +6,6 @@
     <title>Ludzie od podłóg - Profesjonalne Usługi Podłogowe</title>
     <meta name="description" content="Nowoczesne i trwałe podłogi - od paneli winylowych po żywice. Profesjonalne doradztwo i wykonawstwo.">
     
-    <!-- Dołączamy Font Awesome dla ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link rel="stylesheet" href="style.css">
@@ -16,39 +15,34 @@
 </head>
 <body>
 
-    <div id="wrapper">
-        <!-- SEKCJA 1: GŁÓWNA (HERO) -->
+    <!-- PRZYPIĘTY NAGŁÓWEK -->
+    <header id="header">
+        <a href="#hero" class="logo">Ludzie od podłóg</a>
+        <nav>
+            <a href="#services">Usługi</a>
+            <a href="#pricing">Cennik</a>
+            <a href="#contact">Kontakt</a>
+        </nav>
+        <ul class="social-icons">
+            <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+            <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="#" class="icon"><i class="fa-solid fa-envelope"></i></a></li>
+        </ul>
+    </header>
+
+    <!-- GŁÓWNA ZAWARTOŚĆ -->
+    <main id="page-wrapper">
+
+        <!-- SEKCJA 1: HERO (CAŁY EKRAN) -->
         <section id="hero" class="panel">
             <div class="inner">
-                <div class="content">
-                    <h1 class="major">Ludzie od podłóg</h1>
-                    <p>Tworzymy podłogi, które odmieniają wnętrza. <br>Nowocześnie, trwale i z dbałością o każdy detal.</p>
-                </div>
-                <div class="actions">
-                    <a href="#contact" class="button primary">Uzyskaj bezpłatną wycenę</a>
-                </div>
+                <h1 class="major">Idealna podłoga, idealne wnętrze</h1>
+                <p>Specjalizujemy się w tworzeniu podłóg, które łączą piękno z funkcjonalnością.<br>Zobacz, co możemy dla Ciebie zrobić.</p>
+                <a href="#services" class="button primary">Poznaj nasze usługi</a>
             </div>
         </section>
 
-        <!-- SEKCJA 2: O NAS (TRZY KOLUMNY) -->
-        <section id="about" class="panel">
-            <div class="inner columns">
-                <div class="span-1-5">
-                    <h2 class="major">Kim jesteśmy?</h2>
-                    <p>Jesteśmy zespołem pasjonatów z wieloletnim doświadczeniem w branży podłogowej. Łączymy tradycyjne rzemiosło z nowoczesnymi technologiami, aby dostarczać usługi na najwyższym poziomie. Zaufaj profesjonalistom.</p>
-                </div>
-                <div class="span-1">
-                    <h3>Nasze atuty</h3>
-                    <ul class="checklist">
-                        <li><i class="fa-solid fa-check"></i>Doświadczenie i precyzja</li>
-                        <li><i class="fa-solid fa-check"></i>Najwyższa jakość materiałów</li>
-                        <li><i class="fa-solid fa-check"></i>Terminowość realizacji</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEKCJA 3: USŁUGI -->
+        <!-- SEKCJA 2: USŁUGI (CAŁY EKRAN) -->
         <section id="services" class="panel">
             <div class="inner">
                 <h2 class="major">Co robimy?</h2>
@@ -56,42 +50,75 @@
                     <div class="item">
                         <i class="fa-solid fa-layer-group"></i>
                         <h3>Panele Winylowe</h3>
-                        <p>Idealne połączenie estetyki i wytrzymałości.</p>
-                    </div>
-                    <div class="item">
-                        <i class="fa-solid fa-grip-lines"></i>
-                        <h3>Posadzki PCV</h3>
-                        <p>Praktyczne i trwałe rozwiązanie dla każdego obiektu.</p>
+                        <p>Nowoczesność i wytrzymałość.</p>
                     </div>
                     <div class="item">
                         <i class="fa-brands fa-envira"></i>
                         <h3>Parkiety</h3>
-                        <p>Klasyczne piękno drewna w nowoczesnym wydaniu.</p>
-                    </div>
-                    <div class="item">
-                        <i class="fa-solid fa-water"></i>
-                        <h3>Wylewki Samopoziomujące</h3>
-                        <p>Perfekcyjnie równe podłoże pod każdą podłogę.</p>
+                        <p>Klasyczne piękno drewna.</p>
                     </div>
                     <div class="item">
                         <i class="fa-solid fa-brush"></i>
                         <h3>Posadzki Żywiczne</h3>
-                        <p>Nowoczesny design i niezwykła odporność.</p>
+                        <p>Minimalizm i niezwykła odporność.</p>
                     </div>
-                     <div class="item">
-                        <i class="fa-solid fa-star"></i>
-                        <h3>I inne...</h3>
-                        <p>Masz nietypowy projekt? Porozmawiajmy!</p>
+                    <div class="item">
+                        <i class="fa-solid fa-water"></i>
+                        <h3>Wylewki Samopoziomujące</h3>
+                        <p>Perfekcyjna baza pod każdą podłogę.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEKCJA 4: KONTAKT -->
+        <!-- SEKCJA 3: CENNIK (CAŁY EKRAN) -->
+        <section id="pricing" class="panel">
+            <div class="inner">
+                <h2 class="major">Przykładowy Cennik</h2>
+                <p>Każdy projekt wyceniamy indywidualnie. Poniższe pakiety są orientacyjne.</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Panele Winylowe</h3>
+                        <div class="price">od 80 zł/m²</div>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i> Przygotowanie podłoża</li>
+                            <li><i class="fa-solid fa-check"></i> Układanie paneli</li>
+                            <li><i class="fa-solid fa-check"></i> Montaż listew</li>
+                            <li><i class="fa-solid fa-times"></i> Wylewka samopoziomująca</li>
+                        </ul>
+                        <a href="#contact" class="button">Zapytaj o szczegóły</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3>Posadzki Żywiczne</h3>
+                        <div class="price">od 150 zł/m²</div>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i> Gruntowanie podłoża</li>
+                            <li><i class="fa-solid fa-check"></i> Aplikacja żywicy</li>
+                            <li><i class="fa-solid fa-check"></i> Zabezpieczenie lakierem</li>
+                            <li><i class="fa-solid fa-check"></i> System antypoślizgowy</li>
+                        </ul>
+                        <a href="#contact" class="button primary">Wybieram</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Parkiet</h3>
+                        <div class="price">od 120 zł/m²</div>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i> Przygotowanie podłoża</li>
+                            <li><i class="fa-solid fa-check"></i> Układanie parkietu</li>
+                            <li><i class="fa-solid fa-check"></i> Cyklinowanie</li>
+                            <li><i class="fa-solid fa-times"></i> Lakierowanie / Olejowanie</li>
+                        </ul>
+                        <a href="#contact" class="button">Zapytaj o szczegóły</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEKCJA 4: KONTAKT (CAŁY EKRAN) -->
         <section id="contact" class="panel">
             <div class="inner">
                 <h2 class="major">Porozmawiajmy</h2>
-                <p>Wypełnij formularz lub zadzwoń. Jesteśmy do Twojej dyspozycji, aby odpowiedzieć na pytania i przygotować indywidualną ofertę.</p>
+                <p>Wypełnij formularz lub zadzwoń. Jesteśmy do Twojej dyspozycji.</p>
                 <form>
                     <div class="field half">
                         <label for="name">Imię i nazwisko</label>
@@ -103,25 +130,19 @@
                     </div>
                     <div class="field">
                         <label for="message">Wiadomość</label>
-                        <textarea name="message" id="message" rows="5" required></textarea>
+                        <textarea name="message" id="message" rows="4" required></textarea>
                     </div>
                     <div class="actions">
                         <button type="submit" class="button primary">Wyślij wiadomość</button>
                     </div>
                 </form>
-                 <div class="contact-direct">
-                    <p>Wolisz tradycyjny kontakt?</p>
-                    <p><i class="fa-solid fa-phone"></i> <a href="tel:+48000000000">+48 000 000 000</a></p>
-                    <p><i class="fa-solid fa-envelope"></i> <a href="mailto:kontakt@ludzieodpodlog.pl">kontakt@ludzieodpodlog.pl</a></p>
-                </div>
+                <footer id="footer">
+                    <p>© 2025 Ludzie od podłóg. All rights reserved.</p>
+                </footer>
             </div>
         </section>
 
-        <!-- STOPKA -->
-        <footer id="footer">
-            <p>© 2025 Ludzie od podłóg. Strona wzorowana na projekcie <a href="https://carrd.co/">Carrd</a>.</p>
-        </footer>
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
