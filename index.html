@@ -4,49 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ludzie od podłóg - Profesjonalne Usługi Podłogowe</title>
-    <meta name="description" content="Specjalizujemy się w kładzeniu paneli winylowych, posadzek PCV, parkietów, wylewkach samopoziomujących oraz posadzkach żywicznych.">
+    <meta name="description" content="Nowoczesne i trwałe podłogi - od paneli winylowych po żywice. Profesjonalne doradztwo i wykonawstwo.">
+    
+    <!-- Dołączamy Font Awesome dla ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="card-container">
-        <header>
-            <h1>Ludzie od podłóg</h1>
-            <p class="subtitle">Twoi specjaliści od idealnej podłogi</p>
-        </header>
-
-        <main>
-            <section id="about">
-                <h2>O nas</h2>
-                <p>Jesteśmy zespołem doświadczonych fachowców, dla których podłogi to pasja. Dbamy o każdy detal, od przygotowania podłoża aż po finalne wykończenie. Gwarantujemy terminowość, precyzję i najwyższą jakość wykonania.</p>
-            </section>
-
-            <section id="services">
-                <h2>Nasze Usługi</h2>
-                <ul>
-                    <li>Układanie paneli winylowych</li>
-                    <li>Montaż posadzek PCV</li>
-                    <li>Kładzenie parkietów</li>
-                    <li>Wylewki samopoziomujące</li>
-                    <li>Aplikacja posadzek żywicznych</li>
-                </ul>
-            </section>
-
-            <section id="contact">
-                <h2>Skontaktuj się z nami</h2>
-                <p>Zadzwoń lub napisz, aby umówić się na bezpłatną wycenę!</p>
-                <div class="contact-details">
-                    <p><strong>Telefon:</strong> <a href="tel:+48000000000">+48 000 000 000</a></p>
-                    <p><strong>Email:</strong> <a href="mailto:kontakt@przykladowyemail.pl">kontakt@przykladowyemail.pl</a></p>
+    <div id="wrapper">
+        <!-- SEKCJA 1: GŁÓWNA (HERO) -->
+        <section id="hero" class="panel">
+            <div class="inner">
+                <div class="content">
+                    <h1 class="major">Ludzie od podłóg</h1>
+                    <p>Tworzymy podłogi, które odmieniają wnętrza. <br>Nowocześnie, trwale i z dbałością o każdy detal.</p>
                 </div>
-            </section>
-        </main>
+                <div class="actions">
+                    <a href="#contact" class="button primary">Uzyskaj bezpłatną wycenę</a>
+                </div>
+            </div>
+        </section>
 
-        <footer>
-            <p>© 2025 Ludzie od podłóg. Wszelkie prawa zastrzeżone.</p>
+        <!-- SEKCJA 2: O NAS (TRZY KOLUMNY) -->
+        <section id="about" class="panel">
+            <div class="inner columns">
+                <div class="span-1-5">
+                    <h2 class="major">Kim jesteśmy?</h2>
+                    <p>Jesteśmy zespołem pasjonatów z wieloletnim doświadczeniem w branży podłogowej. Łączymy tradycyjne rzemiosło z nowoczesnymi technologiami, aby dostarczać usługi na najwyższym poziomie. Zaufaj profesjonalistom.</p>
+                </div>
+                <div class="span-1">
+                    <h3>Nasze atuty</h3>
+                    <ul class="checklist">
+                        <li><i class="fa-solid fa-check"></i>Doświadczenie i precyzja</li>
+                        <li><i class="fa-solid fa-check"></i>Najwyższa jakość materiałów</li>
+                        <li><i class="fa-solid fa-check"></i>Terminowość realizacji</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCJA 3: USŁUGI -->
+        <section id="services" class="panel">
+            <div class="inner">
+                <h2 class="major">Co robimy?</h2>
+                <div class="grid">
+                    <div class="item">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <h3>Panele Winylowe</h3>
+                        <p>Idealne połączenie estetyki i wytrzymałości.</p>
+                    </div>
+                    <div class="item">
+                        <i class="fa-solid fa-grip-lines"></i>
+                        <h3>Posadzki PCV</h3>
+                        <p>Praktyczne i trwałe rozwiązanie dla każdego obiektu.</p>
+                    </div>
+                    <div class="item">
+                        <i class="fa-brands fa-envira"></i>
+                        <h3>Parkiety</h3>
+                        <p>Klasyczne piękno drewna w nowoczesnym wydaniu.</p>
+                    </div>
+                    <div class="item">
+                        <i class="fa-solid fa-water"></i>
+                        <h3>Wylewki Samopoziomujące</h3>
+                        <p>Perfekcyjnie równe podłoże pod każdą podłogę.</p>
+                    </div>
+                    <div class="item">
+                        <i class="fa-solid fa-brush"></i>
+                        <h3>Posadzki Żywiczne</h3>
+                        <p>Nowoczesny design i niezwykła odporność.</p>
+                    </div>
+                     <div class="item">
+                        <i class="fa-solid fa-star"></i>
+                        <h3>I inne...</h3>
+                        <p>Masz nietypowy projekt? Porozmawiajmy!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCJA 4: KONTAKT -->
+        <section id="contact" class="panel">
+            <div class="inner">
+                <h2 class="major">Porozmawiajmy</h2>
+                <p>Wypełnij formularz lub zadzwoń. Jesteśmy do Twojej dyspozycji, aby odpowiedzieć na pytania i przygotować indywidualną ofertę.</p>
+                <form>
+                    <div class="field half">
+                        <label for="name">Imię i nazwisko</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="field half">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="field">
+                        <label for="message">Wiadomość</label>
+                        <textarea name="message" id="message" rows="5" required></textarea>
+                    </div>
+                    <div class="actions">
+                        <button type="submit" class="button primary">Wyślij wiadomość</button>
+                    </div>
+                </form>
+                 <div class="contact-direct">
+                    <p>Wolisz tradycyjny kontakt?</p>
+                    <p><i class="fa-solid fa-phone"></i> <a href="tel:+48000000000">+48 000 000 000</a></p>
+                    <p><i class="fa-solid fa-envelope"></i> <a href="mailto:kontakt@ludzieodpodlog.pl">kontakt@ludzieodpodlog.pl</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STOPKA -->
+        <footer id="footer">
+            <p>© 2025 Ludzie od podłóg. Strona wzorowana na projekcie <a href="https://carrd.co/">Carrd</a>.</p>
         </footer>
     </div>
 
