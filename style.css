@@ -383,7 +383,34 @@ body {
     }
     
     .nav__list {
-        display: none; /* W prostym landing page można ukryć menu na mobilkach lub zaimplementować menu hamburgerowe */
+        display: flex; /* Zachowujemy flexbox dla przycisku kontakt */
+    }
+    
+    /* Ukrywamy główne linki menu na mobile, ale zostawiamy przycisk kontakt */
+    .nav__item:not(:last-child) {
+        display: none;
+    }
+    
+    /* Zapewniamy, że przycisk kontakt jest zawsze widoczny */
+    .nav__link--button {
+        display: inline-block !important;
+        padding: 0.4rem 1rem; /* Mniejszy padding na mobile */
+        font-size: 0.9rem; /* Mniejszy font na mobile */
+    }
+    
+    /* Dostosowanie marginesów na mobile */
+    .nav__item:last-child {
+        margin-left: 1rem; /* Mniejszy margines na mobile */
+    }
+    
+    /* Dostosowanie logo na mobile */
+    .nav__logo {
+        font-size: 1.3rem; /* Mniejsze logo na mobile */
+    }
+    
+    /* Zmniejszenie wysokości nagłówka na mobile */
+    .nav {
+        height: 4rem; /* Mniejsza wysokość na mobile */
     }
     .section__title {
         font-size: 2rem;
