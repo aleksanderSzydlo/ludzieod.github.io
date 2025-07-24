@@ -29,6 +29,10 @@ body {
     color: var(--text-color);
     line-height: 1.7;
     background-color: #fff;
+    /* Safari iOS fixes */
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -120,12 +124,17 @@ body {
 .hero {
     position: relative;
     height: 100vh;
+    /* Safari iOS fix */
+    min-height: -webkit-fill-available;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--light-text-color);
-    background: url('background-hero.jpg') no-repeat center center/cover;
+    background: url('background-hero.jpg') no-repeat center center;
+    background-size: cover;
+    /* Safari iOS fix dla background */
+    -webkit-background-size: cover;
 }
 .hero__overlay {
     position: absolute;
@@ -158,6 +167,11 @@ body {
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
+    /* Safari iOS fix dla przycisków */
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    cursor: pointer;
 }
 .button--primary {
     background-color: var(--secondary-color);
@@ -166,6 +180,8 @@ body {
 .button--primary:hover {
     background-color: #2980b9;
     transform: translateY(-2px);
+    /* Safari iOS fix dla transform */
+    -webkit-transform: translateY(-2px);
 }
 
 /* --- Usługi --- */
@@ -248,12 +264,17 @@ body {
 .about-us {
     position: relative;
     height: 80vh;
+    /* Safari iOS fix */
+    min-height: -webkit-fill-available;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--light-text-color);
-    background: url('background-contact.jpg') no-repeat center center/cover;
+    background: url('background-contact.jpg') no-repeat center center;
+    background-size: cover;
+    /* Safari iOS fix dla background */
+    -webkit-background-size: cover;
 }
 .about-us__overlay {
     position: absolute;
@@ -295,11 +316,17 @@ body {
     font-family: var(--base-font);
     font-size: 1rem;
     transition: border-color 0.3s, box-shadow 0.3s;
+    /* Safari iOS fixes dla formularzy */
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-border-radius: var(--border-radius);
 }
 .form-group input:focus, .form-group textarea:focus {
     outline: none;
     border-color: var(--secondary-color);
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    /* Safari iOS fix dla focus */
+    -webkit-box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 .contact-form button {
     align-self: center;
@@ -344,6 +371,17 @@ body {
 
 /* --- Media Queries (Responsywność) --- */
 @media (max-width: 768px) {
+    
+    /* Safari iOS viewport fix */
+    html {
+        height: -webkit-fill-available;
+    }
+    
+    body {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+    
     .nav__list {
         display: none; /* W prostym landing page można ukryć menu na mobilkach lub zaimplementować menu hamburgerowe */
     }
@@ -356,8 +394,14 @@ body {
     .hero__subtitle {
         font-size: 1.1rem;
     }
+    .hero {
+        height: 100vh;
+        height: -webkit-fill-available;
+        padding: 0 1rem;
+    }
     .about-us {
         height: auto;
+        min-height: 50vh;
         padding: 5rem 0;
     }
     .about-us__title {
@@ -365,5 +409,36 @@ body {
     }
     .about-us__text {
         font-size: 1.1rem;
+    }
+    
+    /* Safari iOS touch fix */
+    * {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+    }
+    
+    /* Usprawnienie scrollowania na iOS */
+    body {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Poprawka dla siatki usług na mobilnych */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* Poprawka dla tabeli cennika na mobilnych */
+    .pricing-table-wrapper {
+        margin: 0 -1rem;
+    }
+    
+    .pricing-table {
+        font-size: 0.9rem;
+    }
+    
+    .pricing-table th,
+    .pricing-table td {
+        padding: 0.8rem 0.5rem;
     }
 }
