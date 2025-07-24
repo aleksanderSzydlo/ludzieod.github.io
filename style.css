@@ -131,7 +131,7 @@ body {
     justify-content: center;
     text-align: center;
     color: var(--light-text-color);
-    background: url('background-hero.jpg') no-repeat center center;
+    background: url('Galeria/StronaGlowna/background-hero.jpg') no-repeat center center;
     background-size: cover;
     /* Safari iOS fix dla background */
     -webkit-background-size: cover;
@@ -271,7 +271,7 @@ body {
     justify-content: center;
     text-align: center;
     color: var(--light-text-color);
-    background: url('background-contact.jpg') no-repeat center center;
+    background: url('Galeria/StronaGlowna/background-contact.jpg') no-repeat center center;
     background-size: cover;
     /* Safari iOS fix dla background */
     -webkit-background-size: cover;
@@ -298,6 +298,216 @@ body {
     font-size: 1.2rem;
     font-weight: 300;
     line-height: 1.8;
+}
+
+/* --- Galeria Portfolio --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: var(--light-text-color);
+    padding: 2rem 1.5rem 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--light-text-color);
+}
+
+.gallery-overlay p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+/* --- Lightbox --- */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox[style*="flex"] {
+    opacity: 1;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    font-size: 3rem;
+    color: var(--light-text-color);
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 10001;
+    transition: color 0.3s ease;
+}
+
+.lightbox-close:hover {
+    color: var(--secondary-color);
+}
+
+.lightbox-caption {
+    text-align: center;
+    color: var(--light-text-color);
+    margin-top: 1rem;
+    max-width: 600px;
+}
+
+.lightbox-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--light-text-color);
+}
+
+.lightbox-description {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 0;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: var(--light-text-color);
+    background: rgba(0,0,0,0.5);
+    border: none;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    z-index: 10001;
+}
+
+.lightbox-prev {
+    left: 2rem;
+}
+
+.lightbox-next {
+    right: 2rem;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(0,0,0,0.8);
+    color: var(--secondary-color);
+}
+
+/* Responsywność dla lightbox */
+@media (max-width: 768px) {
+    .lightbox-content {
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+    
+    .lightbox-image {
+        max-height: 70vh;
+    }
+    
+    .lightbox-close {
+        top: -40px;
+        font-size: 2.5rem;
+    }
+    
+    .lightbox-prev,
+    .lightbox-next {
+        font-size: 2rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .lightbox-prev {
+        left: 1rem;
+    }
+    
+    .lightbox-next {
+        right: 1rem;
+    }
+    
+    .lightbox-caption {
+        margin-top: 0.5rem;
+        padding: 0 1rem;
+    }
+    
+    .lightbox-title {
+        font-size: 1.2rem;
+    }
+    
+    .lightbox-description {
+        font-size: 0.9rem;
+    }
 }
 
 /* --- Formularz Kontaktowy --- */
@@ -453,6 +663,22 @@ body {
     .services-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+    
+    /* Poprawka dla galerii na mobilnych */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .gallery-item img {
+        height: 250px;
+    }
+    
+    .gallery-overlay {
+        transform: translateY(0);
+        background: rgba(0,0,0,0.7);
     }
     
     /* Poprawka dla tabeli cennika na mobilnych */
