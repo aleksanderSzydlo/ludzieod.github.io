@@ -1,196 +1,369 @@
-/* --- PODSTAWOWE USTAWIENIA --- */
+/* --- Zmienne globalne --- */
 :root {
-    --primary-color: #5c67f5;
-    --dark-color: #212931;
-    --light-color: #ffffff;
-    --text-color: #a2a9b0;
-    --panel-bg-color: #2a333c;
-    --border-color: #3e4853;
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e67e22;
+    --light-gray-color: #f8f9fa;
+    --text-color: #333;
+    --light-text-color: #fff;
+    --base-font: 'Poppins', sans-serif;
+    --container-width: 1140px;
+    --border-radius: 5px;
+    --box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-* {
+/* --- Reset i style podstawowe --- */
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--dark-color);
+    font-family: var(--base-font);
     color: var(--text-color);
-    font-size: 16px;
-    line-height: 1.75;
+    line-height: 1.7;
+    background-color: #fff;
 }
 
-#wrapper {
-    max-width: 1000px;
+.container {
+    max-width: var(--container-width);
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 0 1rem;
 }
 
-h1, h2, h3 {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--light-color);
+.section {
+    padding: 5rem 0;
+}
+
+.section--light {
+    background-color: var(--light-gray-color);
+}
+
+.section__title {
+    text-align: center;
+    font-size: 2.5rem;
     font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
 }
 
-h1.major { font-size: 2.5em; }
-h2.major { font-size: 2em; text-align: center; margin-bottom: 2rem; }
-p { margin-bottom: 1rem; }
-a { color: var(--primary-color); text-decoration: none; transition: color 0.2s ease-in-out; }
-a:hover { color: var(--light-color); }
+.section__subtitle {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    font-size: 1.1rem;
+    color: #555;
+}
 
-/* --- PANELE (SEKCJE) --- */
-.panel {
-    background-color: var(--panel-bg-color);
-    padding: 4rem 3rem;
+/* --- Nagłówek i Nawigacja --- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    transition: box-shadow 0.3s ease;
+}
+.header.scrolled {
+    box-shadow: var(--box-shadow);
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+}
+.nav__logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.nav__list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+.nav__item {
+    margin-left: 2rem;
+}
+.nav__link {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+.nav__link:hover {
+    color: var(--secondary-color);
+}
+.nav__link--button {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+}
+.nav__link--button:hover {
+    background-color: #2980b9;
+    color: var(--light-text-color);
+}
+
+/* --- Sekcja Hero --- */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--light-text-color);
+    background: url('background-hero.jpg') no-repeat center center/cover;
+}
+.hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.hero__content {
+    position: relative;
+    z-index: 2;
+}
+.hero__title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.hero__subtitle {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-weight: 300;
     margin-bottom: 2rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    transition: opacity 0.65s ease-in-out, transform 0.65s ease-in-out;
-    opacity: 0;
-    transform: translateY(30px);
 }
-.panel.is-visible {
+
+/* --- Przyciski --- */
+.button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.button--primary {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+}
+.button--primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* --- Usługi --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+.service-card {
+    background-color: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.service-card__icon {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+.service-card__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.service-card__description {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* --- Cennik --- */
+.pricing-table-wrapper {
+    overflow-x: auto;
+}
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 3rem;
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+.pricing-table th, .pricing-table td {
+    padding: 1.2rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+.pricing-table th {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    font-weight: 600;
+}
+.pricing-table tr:last-child td {
+    border-bottom: none;
+}
+.pricing-table tr:nth-child(even) {
+    background-color: var(--light-gray-color);
+}
+.pricing-table__highlight {
+    font-weight: 700;
+    color: var(--accent-color);
+}
+.pricing-note {
+    text-align: center;
+    margin-top: 2rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* --- Sekcja O Nas --- */
+.about-us {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--light-text-color);
+    background: url('background-contact.jpg') no-repeat center center/cover;
+}
+.about-us__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 62, 80, 0.7);
+}
+.about-us__content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+.about-us__title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.about-us__text {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* --- Formularz Kontaktowy --- */
+.contact-form {
+    max-width: 700px;
+    margin: 3rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-family: var(--base-font);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+.contact-form button {
+    align-self: center;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+/* --- Stopka --- */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 3rem 0;
+}
+.footer-content {
+    text-align: center;
+}
+.footer__socials {
+    margin-bottom: 1.5rem;
+}
+.footer__social-link {
+    color: var(--light-text-color);
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer__social-link:hover {
+    color: var(--secondary-color);
+}
+.footer__copyright {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* --- Animacje przy przewijaniu --- */
+.section {
+    /* Usunięte animacje, które powodowały niewidoczność sekcji */
     opacity: 1;
     transform: translateY(0);
 }
 
-/* --- SEKCJA HERO Z TŁEM --- */
-#hero { 
-    text-align: center;
-    position: relative;
-    background-image: url('background-hero.jpg'); /* Tło dla sekcji Hero */
-    background-size: cover;
-    background-position: center;
-    overflow: hidden; /* Zapobiega "wylewaniu się" pseudo-elementu */
-}
-
-#hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(42, 51, 60, 0.8); /* Półprzezroczysta nakładka dla czytelności */
-    z-index: 0;
-}
-
-#hero > .inner {
-    position: relative; /* Ustawia tekst nad nakładką */
-    z-index: 1;
-}
-
-/* --- PRZYCISKI I AKCJE --- */
-.button {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: var(--light-color);
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
-    transition: background-color 0.2s ease-in-out;
-    border: none;
-    cursor: pointer;
-}
-.button:hover { background-color: #6a75f8; }
-.actions { margin-top: 2rem; }
-
-/* --- UKŁAD KOLUMNOWY --- */
-.columns { display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start; }
-.columns .span-1-5 { flex-basis: 0; flex-grow: 1.5; }
-.columns .span-1 { flex-basis: 0; flex-grow: 1; }
-
-.checklist { list-style: none; }
-.checklist li { margin-bottom: 0.5rem; }
-.checklist i { color: var(--primary-color); margin-right: 0.5rem; }
-
-/* --- SIATKA USŁUG --- */
-#services .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    text-align: center;
-}
-#services .item i {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-#services .item h3 {
-    font-size: 1.2em;
-    margin-bottom: 0.5rem;
-}
-
-/* --- SEKCJA KONTAKT Z TŁEM --- */
-#contact.panel {
-    position: relative;
-    background-image: url('background-contact.jpg'); /* Tło dla sekcji Kontakt */
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-}
-
-#contact.panel::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(33, 41, 49, 0.85); /* Ciemniejsza nakładka dla kontrastu */
-    z-index: 0;
-}
-
-#contact.panel > .inner {
-    position: relative;
-    z-index: 1;
-}
-
-/* --- FORMULARZ --- */
-form { display: flex; flex-wrap: wrap; gap: 1rem; }
-.field { display: flex; flex-direction: column; width: 100%; }
-.field.half { width: calc(50% - 0.5rem); }
-.field label { margin-bottom: 0.5rem; font-weight: 700; color: var(--light-color); }
-.field input, .field textarea {
-    padding: 0.75rem;
-    background-color: var(--dark-color);
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    color: var(--light-color);
-    font-family: 'Roboto', sans-serif;
-}
-.field input:focus, .field textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-}
-.contact-direct {
-    text-align: center;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
-}
-.contact-direct p { margin-bottom: 0.5rem; }
-
-/* --- STOPKA --- */
-#footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.9em;
-}
-
-/* --- RESPONSIVE --- */
+/* --- Media Queries (Responsywność) --- */
 @media (max-width: 768px) {
-    body { font-size: 14px; }
-    #wrapper { padding: 1rem 0.5rem; }
-    .panel { padding: 2.5rem 1.5rem; }
-    h1.major { font-size: 2em; }
-    h2.major { font-size: 1.7em; }
-    .field.half { width: 100%; }
+    .nav__list {
+        display: none; /* W prostym landing page można ukryć menu na mobilkach lub zaimplementować menu hamburgerowe */
+    }
+    .section__title {
+        font-size: 2rem;
+    }
+    .hero__title {
+        font-size: 2.2rem;
+    }
+    .hero__subtitle {
+        font-size: 1.1rem;
+    }
+    .about-us {
+        height: auto;
+        padding: 5rem 0;
+    }
+    .about-us__title {
+        font-size: 2.2rem;
+    }
+    .about-us__text {
+        font-size: 1.1rem;
+    }
 }
