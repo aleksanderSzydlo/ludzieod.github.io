@@ -212,14 +212,8 @@ function initProjectsGallery() {
                     description: 'Nowoczesny salon, 45m²'
                 },
                 {
-                    src: 'Galeria/Portfolio2/ammar-elamir-I6wOgnAK1TI-unsplash.jpg',
-                    alt: 'Portfolio2 - obraz 2',
-                    title: 'Parkiet drewniany',
-                    description: 'Elegancka sypialnia, 25m²'
-                },
-                {
                     src: 'Galeria/Portfolio2/asia-culturecenter-3biXFHM4MZw-unsplash.jpg',
-                    alt: 'Portfolio2 - obraz 3',
+                    alt: 'Portfolio2 - obraz 2',
                     title: 'Posadzka żywiczna',
                     description: 'Garaż dwustanowiskowy, 40m²'
                 }
@@ -231,22 +225,89 @@ function initProjectsGallery() {
             description: 'Najnowsze trendy w dziedzinie podłóg - innowacyjne materiały i awangardowe wzornictwo.',
             images: [
                 {
-                    src: 'Galeria/Portfolio3/alex-gray-_WulGWc2aRs-unsplash.jpg',
+                    src: 'Galeria/Portfolio3/asia-culturecenter-2qv-Ot8gSIU-unsplash.jpg',
                     alt: 'Portfolio3 - obraz 1',
                     title: 'Nowoczesny design',
                     description: 'Designer loft, 80m²'
                 },
                 {
-                    src: 'Galeria/Portfolio3/ammar-elamir-I6wOgnAK1TI-unsplash.jpg',
+                    src: 'Galeria/Portfolio3/hood-klXmHLDDQWI-unsplash.jpg',
                     alt: 'Portfolio3 - obraz 2',
                     title: 'Minimalistyczne wnętrze',
                     description: 'Nowoczesny apartament, 50m²'
                 },
                 {
-                    src: 'Galeria/Portfolio3/asia-culturecenter-3biXFHM4MZw-unsplash.jpg',
+                    src: 'Galeria/Portfolio3/mitchell-luo-ubtbZcOuCwE-unsplash.jpg',
                     alt: 'Portfolio3 - obraz 3',
-                    title: 'Futurystyczna podłoga',
+                    title: 'Przemysłowy styl',
                     description: 'Przestrzeń komercyjna, 150m²'
+                },
+                {
+                    src: 'Galeria/Portfolio3/val-toch-u4PSeilirlw-unsplash.jpg',
+                    alt: 'Portfolio3 - obraz 4',
+                    title: 'Elegancka podłoga',
+                    description: 'Reprezentacyjne biuro, 120m²'
+                },
+                {
+                    src: 'Galeria/Portfolio3/waldemar-IFpDwnvLgpA-unsplash.jpg',
+                    alt: 'Portfolio3 - obraz 5',
+                    title: 'Stylowe wnętrze',
+                    description: 'Nowoczesna rezydencja, 200m²'
+                }
+            ]
+        },
+        {
+            id: 'Portfolio4',
+            title: 'Projekt Premium',
+            description: 'Ekskluzywne realizacje dla najbardziej wymagających klientów - luksusowe materiały i perfekcyjne wykonanie.',
+            images: [
+                {
+                    src: 'Galeria/Portfolio4/andrew-neel-A9Msi-vUNKg-unsplash.jpg',
+                    alt: 'Portfolio4 - obraz 1',
+                    title: 'Luksusowy parkiet',
+                    description: 'Ekskluzywna willa, 300m²'
+                },
+                {
+                    src: 'Galeria/Portfolio4/collov-home-design-xJ14RuLV9zI-unsplash.jpg',
+                    alt: 'Portfolio4 - obraz 2',
+                    title: 'Designer podłoga',
+                    description: 'Penthouse, 180m²'
+                },
+                {
+                    src: 'Galeria/Portfolio4/john-salvino-yTX43WEBClE-unsplash.jpg',
+                    alt: 'Portfolio4 - obraz 3',
+                    title: 'Premium winyl',
+                    description: 'Luksusowy apartament, 150m²'
+                },
+                {
+                    src: 'Galeria/Portfolio4/jorgen-berglund-BK5JSDp2Ovo-unsplash.jpg',
+                    alt: 'Portfolio4 - obraz 4',
+                    title: 'Ekskluzywne wzory',
+                    description: 'Boutique hotel, 500m²'
+                },
+                {
+                    src: 'Galeria/Portfolio4/mateus-campos-felipe-c_aZgQrks8Q-unsplash.jpg',
+                    alt: 'Portfolio4 - obraz 5',
+                    title: 'Artystyczne podłogi',
+                    description: 'Galeria sztuki, 400m²'
+                },
+                {
+                    src: 'Galeria/Portfolio4/sandro-kradolfer-9uzR9y_d5NU-unsplash.jpg',
+                    alt: 'Portfolio4 - obraz 6',
+                    title: 'Luksusowy marmur',
+                    description: 'Ekskluzywna klinika, 250m²'
+                },
+                {
+                    src: 'Galeria/Portfolio4/steven-ungermann-CVTmLMv5oG4-unsplash.jpg',
+                    alt: 'Portfolio4 - obraz 7',
+                    title: 'Premium design',
+                    description: 'Luksusowy showroom, 350m²'
+                },
+                {
+                    src: 'Galeria/Portfolio4/tommy-bond-SlpgFJWArNE-unsplash.jpg',
+                    alt: 'Portfolio4 - obraz 8',
+                    title: 'Najwyższa jakość',
+                    description: 'Rezydencja VIP, 600m²'
                 }
             ]
         }
@@ -342,6 +403,15 @@ function initProjectsGallery() {
         const translateX = -currentProjectIndex * 100;
         projectsSlider.style.transform = `translateX(${translateX}%)`;
         
+        // Dynamiczne dostosowanie wysokości kontenera do aktualnego projektu
+        setTimeout(() => {
+            const currentSlide = projectsSlider.children[currentProjectIndex];
+            if (currentSlide) {
+                const slideHeight = currentSlide.offsetHeight;
+                projectsContainer.style.height = slideHeight + 'px';
+            }
+        }, 50); // Krótkie opóźnienie, aby elementy zdążyły się wyrenderować
+        
         // Aktualizacja wskaźników
         document.querySelectorAll('.project-indicator').forEach((indicator, index) => {
             indicator.classList.toggle('active', index === currentProjectIndex);
@@ -370,6 +440,18 @@ function initProjectsGallery() {
     // Rozpocznij renderowanie projektów
     renderProjects();
     setupNavigation();
+    
+    // Inicjalizacja wysokości dla pierwszego projektu po załadowaniu
+    setTimeout(() => {
+        updateProjectView();
+    }, 100);
+    
+    // Obsługa zmiany rozmiaru okna - dostosowanie wysokości galerii
+    window.addEventListener('resize', () => {
+        setTimeout(() => {
+            updateProjectView();
+        }, 100);
+    });
 }
 
 // Lightbox dla galerii
@@ -496,6 +578,27 @@ function initPriceCalculator() {
     const resultServices = document.getElementById('result-services');
     const resultAdditional = document.getElementById('result-additional');
     const resultTotalCost = document.getElementById('result-total-cost');
+    
+    // Flaga informująca czy kalkulator coś policzył
+    let hasCalculatedResult = false;
+    
+    // Funkcja aktualizacji stanu przycisku "Zamów"
+    function updateOrderButton() {
+        const orderBtn = document.getElementById('result-order-btn');
+        if (orderBtn) {
+            if (hasCalculatedResult) {
+                orderBtn.style.opacity = '1';
+                orderBtn.style.pointerEvents = 'auto';
+                orderBtn.style.cursor = 'pointer';
+                orderBtn.title = 'Kliknij, aby zamówić';
+            } else {
+                orderBtn.style.opacity = '0.5';
+                orderBtn.style.pointerEvents = 'none';
+                orderBtn.style.cursor = 'not-allowed';
+                orderBtn.title = 'Najpierw oblicz wycenę';
+            }
+        }
+    }
 
     // Dane usług z czasem realizacji
     const servicesData = {
@@ -811,6 +914,10 @@ function initPriceCalculator() {
         resultAdditional.innerHTML = additionalHTML;
         resultTotalCost.textContent = `${finalTotalCost.toLocaleString('pl-PL')} zł`;
 
+        // Oznacz że kalkulator policzył wynik
+        hasCalculatedResult = true;
+        updateOrderButton();
+
         // Dodanie efektu wizualnego
         const resultCard = document.querySelector('.result-card');
         resultCard.style.transform = 'scale(0.95)';
@@ -905,10 +1012,24 @@ function initPriceCalculator() {
             }
         }
     });
+    
+    // Obliczanie przy odkliknięciu pola powierzchni
+    areaInput.addEventListener('blur', () => {
+        if (areaInput.value && isValidCity) {
+            calculateCost();
+        }
+    });
+
+    // Funkcja resetująca stan obliczeń
+    function resetCalculatedState() {
+        hasCalculatedResult = false;
+        updateOrderButton();
+    }
 
     // Automatyczne obliczanie przy zmianie opcji materiału
     materialRadios.forEach(radio => {
         radio.addEventListener('change', () => {
+            resetCalculatedState();
             autoCalculateIfReady();
         });
     });
@@ -916,8 +1037,19 @@ function initPriceCalculator() {
     // Automatyczne obliczanie przy zmianie usług
     serviceCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
+            resetCalculatedState();
             autoCalculateIfReady();
         });
+    });
+    
+    // Resetowanie przy zmianie powierzchni
+    areaInput.addEventListener('input', () => {
+        resetCalculatedState();
+    });
+    
+    // Resetowanie przy zmianie miasta
+    cityInput.addEventListener('input', () => {
+        resetCalculatedState();
     });
 
     // Dodanie stylizacji do result-card
@@ -928,4 +1060,68 @@ function initPriceCalculator() {
 
     // Inicjalne wyświetlenie pustego stanu
     resultServices.innerHTML = '<p style="text-align: center; color: #666; font-style: italic;">Wybierz usługi, aby zobaczyć wycenę</p>';
+    
+    // Obsługa przycisku "Zamów teraz"
+    const orderBtn = document.getElementById('result-order-btn');
+    if (orderBtn) {
+        orderBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Zbieranie danych z kalkulatora
+            const area = areaInput.value;
+            const city = cityInput.value;
+            const selectedServices = [];
+            const materialOption = document.querySelector('input[name="material-option"]:checked')?.value;
+            
+            serviceCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    const serviceName = checkbox.parentElement.querySelector('.service-name').textContent;
+                    selectedServices.push(serviceName);
+                }
+            });
+            
+            const totalCost = document.getElementById('result-total-cost').textContent;
+            
+            // Przygotowanie wiadomości
+            const message = `Dzień dobry! 
+
+Na podstawie kalkulatora na stronie chciałbym zamówić następujące usługi:
+
+📍 Miasto: ${city}
+📐 Powierzchnia: ${area} m²
+🏗️ Wybrane usługi: ${selectedServices.join(', ')}
+💰 Opcja materiału: ${materialOption === 'standard' ? 'Standardowa cena (własny materiał)' : 'Z Waszym materiałem (rabat)'}
+💵 Orientacyjny koszt: ${totalCost}
+
+Proszę o kontakt w celu ustalenia szczegółów realizacji.
+
+Pozdrawiam`;
+
+            // Wypełnienie formularza kontaktowego
+            const messageField = document.getElementById('message');
+            if (messageField) {
+                messageField.value = message;
+            }
+            
+            // Płynne przewinięcie do formularza kontaktowego
+            const contactSection = document.getElementById('kontakt');
+            if (contactSection) {
+                contactSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Focus na pole imię po przewinięciu
+                setTimeout(() => {
+                    const nameField = document.getElementById('name');
+                    if (nameField) {
+                        nameField.focus();
+                    }
+                }, 800);
+            }
+        });
+    }
+    
+    // Inicjalizacja stanu przycisku zamawiana przy ładowaniu strony
+    updateOrderButton();
 }
