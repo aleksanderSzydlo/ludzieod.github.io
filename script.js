@@ -1,5 +1,112 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    // === NOWOCZESNE EFEKTY I ANIMACJE ===
+    
+    // Progress bar dla przewijania
+    function initScrollProgress() {
+        const progressBar = document.createElement('div');
+        progressBar.className = 'scroll-progress';
+        document.body.appendChild(progressBar);
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+    }
+    
+    // Intersection Observer dla animacji scroll reveal
+    function initScrollAnimations() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    
+                    // Dodawanie delay dla kart w gridzie
+                    const cards = entry.target.querySelectorAll('.service-card, .service-compact');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('fade-in-up');
+                        }, index * 100);
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        // Obserwowanie wszystkich sekcji
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Obserwowanie kart usług
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.classList.add('animate-on-scroll');
+            observer.observe(card);
+        });
+    }
+    
+    // Parallax efekt dla hero
+    function initParallaxEffect() {
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+                hero.style.transform = `translateY(${rate}px)`;
+            });
+        }
+    }
+    
+    // Smooth hover effects dla przycisków
+    function initButtonEffects() {
+        const buttons = document.querySelectorAll('.button');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    }
+    
+    // Typing effect dla tytułów
+    function initTypingEffect() {
+        const title = document.querySelector('.hero__title');
+        if (title) {
+            const text = title.textContent;
+            title.textContent = '';
+            title.style.opacity = '1';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < text.length) {
+                    title.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            };
+            
+            setTimeout(typeWriter, 1000);
+        }
+    }
+    
+    // Inicjalizacja wszystkich nowoczesnych efektów
+    initScrollProgress();
+    initScrollAnimations();
+    initParallaxEffect();
+    initButtonEffects();
+    initTypingEffect();
+
     // Płynne przewijanie do sekcji
     const navLinks = document.querySelectorAll('.nav__link[href^="#"]');
     navLinks.forEach(link => {
