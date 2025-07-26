@@ -184,7 +184,122 @@ body {
     -webkit-transform: translateY(-2px);
 }
 
-/* --- Usługi --- */
+.form-help {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-top: 0.3rem;
+    font-style: italic;
+}
+
+/* City input with autocomplete */
+.city-input-wrapper {
+    position: relative;
+}
+
+.city-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.city-suggestion {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.city-suggestion:hover,
+.city-suggestion.highlighted {
+    background-color: #f8f9fa;
+}
+
+.city-suggestion:last-child {
+    border-bottom: none;
+}
+
+.city-name {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.city-distance {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.city-validation {
+    margin-top: 0.3rem;
+    font-size: 0.75rem;
+    min-height: 1rem;
+}
+
+.city-validation.valid {
+    color: #28a745;
+}
+
+.city-validation.invalid {
+    color: #dc3545;
+}
+
+.city-validation i {
+    margin-right: 0.3rem;
+}
+
+.form-input.valid {
+    border-color: #28a745;
+    background-color: #f8fff9;
+}
+
+.form-input.invalid {
+    border-color: #dc3545;
+    background-color: #fff8f8;
+}
+
+.result-additional {
+    margin: 1rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid #e5e5e5;
+}
+
+.result-additional-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.result-additional-cost {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.result-duration {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    margin: 0.5rem 0;
+}
+
+/* Services compact grid styles */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -260,6 +375,402 @@ body {
     color: #666;
 }
 
+/* --- Kalkulator Wycen --- */
+.calculator-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+    align-items: start;
+}
+
+.calculator-form {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid #e0e0e0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.form-select,
+.form-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-family: var(--base-font);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+.form-select:focus,
+.form-input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-select {
+    cursor: pointer;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding-left: 2rem;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.radio-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-custom {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 18px;
+    width: 18px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.radio-label:hover .radio-custom {
+    border-color: var(--secondary-color);
+}
+
+.radio-label input[type="radio"]:checked ~ .radio-custom {
+    border-color: var(--secondary-color);
+    background-color: var(--secondary-color);
+}
+
+.radio-label input[type="radio"]:checked ~ .radio-custom:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* Checkbox styles dla usług */
+.services-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Kompaktowy grid dla usług */
+.services-compact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.service-compact {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    background: #fff;
+    overflow: hidden;
+}
+
+.service-compact:hover {
+    border-color: var(--secondary-color);
+    background: #f8f9ff;
+}
+
+.service-compact input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.service-compact input[type="checkbox"]:checked + .service-compact-content {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+}
+
+.service-compact input[type="checkbox"]:checked + .service-compact-content .service-icon {
+    color: white;
+}
+
+.service-compact-content {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.service-icon {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+    width: 24px;
+    text-align: center;
+}
+
+.service-details {
+    flex: 1;
+}
+
+.service-compact .service-name {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+    color: inherit;
+}
+
+.service-compact .service-price {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    color: inherit;
+}
+
+.services-legend {
+    grid-column: span 2;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.services-legend small {
+    color: #666;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    position: relative;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.checkbox-label:hover {
+    border-color: var(--secondary-color);
+    background: #f8f9ff;
+}
+
+.checkbox-label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkbox-custom {
+    position: relative;
+    margin-right: 1rem;
+    margin-top: 0.2rem;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-label:hover .checkbox-custom {
+    border-color: var(--secondary-color);
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkbox-custom {
+    border-color: var(--secondary-color);
+    background-color: var(--secondary-color);
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkbox-custom:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border: 2px solid white;
+    border-top: none;
+    border-right: none;
+    border-radius: 1px;
+    transform: translate(-50%, -65%) rotate(-45deg);
+    width: 10px;
+    height: 5px;
+}
+
+.service-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.service-name {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.3rem;
+}
+
+.service-price {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .service-info .service-name {
+    color: var(--secondary-color);
+}
+
+/* Result services styles */
+.result-services {
+    margin: 1rem 0;
+}
+
+.result-service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    background: #f8f9fa;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--secondary-color);
+}
+
+.result-service-item:last-child {
+    margin-bottom: 0;
+}
+
+.result-service-name {
+    font-weight: 600;
+    color: var(--text-color);
+    flex: 1;
+}
+
+.result-service-cost {
+    font-weight: 600;
+    color: var(--accent-color);
+    font-size: 1.05rem;
+}
+
+.calculator-result {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.result-card {
+    background: #fff;
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+}
+
+.result-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.result-details {
+    margin-bottom: 1.5rem;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-total {
+    background: var(--light-gray-color);
+    margin: 1rem -1rem 0;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.result-label {
+    color: #666;
+    font-weight: 500;
+}
+
+.result-value {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.result-total .result-value {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.result-note {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--accent-color);
+}
+
+.result-note p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
 /* --- Sekcja O Nas --- */
 .about-us {
     position: relative;
@@ -300,12 +811,102 @@ body {
     line-height: 1.8;
 }
 
-/* --- Galeria Portfolio --- */
+/* --- Galeria Portfolio - System Projektów --- */
+.projects-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 3rem 0 2rem;
+}
+
+.project-nav-btn {
+    background: var(--primary-color);
+    color: var(--light-text-color);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--box-shadow);
+}
+
+.project-nav-btn:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.project-nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.project-indicators {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.project-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-indicator.active {
+    background: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.projects-container {
+    overflow: hidden;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.projects-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.project-slide {
+    min-width: 100%;
+    flex-shrink: 0;
+}
+
+.project-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.project-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.project-description {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
-    margin-top: 4rem;
+    margin-top: 2rem;
 }
 
 .gallery-item {
@@ -360,6 +961,27 @@ body {
     font-size: 0.9rem;
     opacity: 0.9;
     margin-bottom: 0;
+}
+
+.projects-loader {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+    display: none;
+}
+
+.projects-loader.loading {
+    display: block;
+}
+
+.projects-loader i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.projects-loader p {
+    font-size: 1.1rem;
 }
 
 /* --- Lightbox --- */
@@ -666,6 +1288,27 @@ body {
     }
     
     /* Poprawka dla galerii na mobilnych */
+    /* Projekty/Galeria */
+    .projects-navigation {
+        gap: 1rem;
+        margin: 2rem 0 1rem;
+    }
+    
+    .project-nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+    
+    .project-title {
+        font-size: 1.6rem;
+    }
+    
+    .project-description {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
     .gallery-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -693,5 +1336,125 @@ body {
     .pricing-table th,
     .pricing-table td {
         padding: 0.8rem 0.5rem;
+    }
+
+    /* Kalkulator na mobile */
+    .calculator-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .calculator-form,
+    .result-card {
+        padding: 1.5rem;
+    }
+    
+    .form-select,
+    .form-input {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+    }
+    
+    .radio-label {
+        font-size: 0.9rem;
+    }
+    
+    /* Kompaktowe usługi na mobile */
+    .services-compact-grid {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+    }
+    
+    .service-compact-content {
+        padding: 0.8rem;
+    }
+    
+    .service-icon {
+        font-size: 1.3rem;
+        margin-right: 0.8rem;
+    }
+    
+    .service-compact .service-name {
+        font-size: 0.9rem;
+    }
+    
+    .service-compact .service-price {
+        font-size: 0.75rem;
+    }
+    
+    .services-legend {
+        grid-column: span 1;
+    }
+    
+    .form-help {
+        font-size: 0.7rem;
+    }
+    
+    .city-suggestions {
+        max-height: 150px;
+        font-size: 0.9rem;
+    }
+    
+    .city-suggestion {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .city-distance {
+        font-size: 0.7rem;
+    }
+    
+    .city-validation {
+        font-size: 0.7rem;
+    }
+    
+    .result-additional-item {
+        font-size: 0.85rem;
+        padding: 0.4rem 0;
+    }
+    
+    /* Checkbox styles na mobile */
+    .checkbox-label {
+        padding: 0.8rem;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .checkbox-custom {
+        margin-right: 0.8rem;
+        margin-top: 0.1rem;
+    }
+    
+    .service-name {
+        font-size: 0.95rem;
+    }
+    
+    .service-price {
+        font-size: 0.85rem;
+    }
+    
+    .result-service-item {
+        padding: 0.6rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+    
+    .result-service-name {
+        font-size: 0.9rem;
+    }
+    
+    .result-service-cost {
+        font-size: 1rem;
+        align-self: flex-end;
+    }
+    
+    .result-title {
+        font-size: 1.3rem;
+    }
+    
+    .result-total {
+        margin: 1rem -0.5rem 0;
+        padding: 0.8rem;
     }
 }
