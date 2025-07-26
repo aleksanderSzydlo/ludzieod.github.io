@@ -107,9 +107,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initButtonEffects();
     initTypingEffect();
 
-    // Płynne przewijanie do sekcji
-    const navLinks = document.querySelectorAll('.nav__link[href^="#"]');
-    navLinks.forEach(link => {
+    // Płynne przewijanie do sekcji - dla nawigacji i przycisków
+    const scrollLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
+    scrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
