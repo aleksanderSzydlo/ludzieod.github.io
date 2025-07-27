@@ -1,17 +1,17 @@
-/* --- Zmienne globalne - MODERNA PALETA 2025 --- */
+/* --- Zmienne globalne - PALETA BRAND 2025 --- */
 :root {
-    /* Kolory główne - nowoczesna paleta */
-    --primary-color: #1e293b;        /* Głęboki slate */
-    --secondary-color: #06b6d4;      /* Cyan nowoczesny */
+    /* Kolory główne - dopasowane do logo */
+    --primary-color: #6366f1;        /* Indigo/Purple z logo */
+    --secondary-color: #8b5cf6;      /* Violet accent */
     --accent-color: #f59e0b;         /* Amber energetyczny */
     --success-color: #10b981;        /* Emerald */
     --warning-color: #f97316;        /* Orange */
     
     /* Gradienty */
-    --primary-gradient: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-    --secondary-gradient: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    --secondary-gradient: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
     --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-    --hero-gradient: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.8) 100%);
+    --hero-gradient: linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(139, 92, 246, 0.8) 100%);
     
     /* Teksty */
     --text-color: #0f172a;
@@ -135,6 +135,46 @@ body {
     font-size: 1.5rem;
     color: var(--primary-color);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav__logo-img {
+    height: 40px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+}
+
+.nav__logo-text {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+@media (max-width: 480px) {
+    .nav__logo-text {
+        display: none;
+    }
+    
+    .nav__logo-img {
+        height: 35px;
+    }
+    
+    .footer__brand {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer__logo {
+        height: 40px;
+    }
+    
+    .footer__brand-text {
+        font-size: 1.2rem;
+    }
 }
 .nav__list {
     display: flex;
@@ -1522,6 +1562,28 @@ body {
     text-align: center;
     position: relative;
     z-index: 1;
+}
+
+.footer__brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.footer__logo {
+    height: 50px;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.footer__brand-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--light-text-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .footer__socials {
