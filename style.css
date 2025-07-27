@@ -343,10 +343,10 @@ body {
     }
     
     .gallery-item img {
-        height: 200px;
+        height: 220px;
         width: 100%;
         object-fit: cover;
-        object-position: center;
+        object-position: center top;
         display: block;
         border-radius: 12px;
     }
@@ -1687,11 +1687,12 @@ body {
     }
     
     .gallery-item img {
-        height: 250px;
+        height: 270px;
         width: 100%;
         object-fit: cover;
-        object-position: center;
+        object-position: center top;
         display: block;
+        border-radius: 15px;
     }
     
     /* Sekcje i kontenery na tabletach */
@@ -2066,9 +2067,9 @@ body {
     }
     
     .gallery-item img {
-        height: 280px;
+        height: 300px;
         object-fit: cover;
-        object-position: center;
+        object-position: center top;
     }
     
     .projects-navigation {
@@ -2085,8 +2086,10 @@ body {
     }
     
     .gallery-item img {
-        height: 180px;
+        height: 200px;
         border-radius: 10px;
+        object-fit: cover;
+        object-position: center top;
     }
     
     .gallery-overlay {
