@@ -212,6 +212,19 @@ body {
     color: var(--secondary-color);
 }
 
+/* Active navigation state */
+.nav__link.active {
+    color: #ff6b35 !important; /* Pomarańczowy kolor dla lepszej widoczności */
+    font-weight: 700;
+    transform: scale(1.05);
+}
+
+.nav__link.active::after {
+    width: 100%;
+    background: #ff6b35 !important;
+    height: 3px; /* Grubsza linia */
+}
+
 .nav__link--button {
     background: var(--secondary-gradient);
     color: var(--light-text-color);

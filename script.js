@@ -224,6 +224,79 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ========== NAVIGATION HIGHLIGHTING ==========
+    
+    // Initialize navigation highlighting system
+    function initNavigationHighlighting() {
+        const navLinks = document.querySelectorAll('.nav__link');
+        const sections = document.querySelectorAll('section[id]');
+        
+        console.log('Navigation highlighting initialized');
+        console.log('Found nav links:', navLinks.length);
+        console.log('Found sections:', sections.length);
+        
+        // Create intersection observer for navigation highlighting
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                console.log('Observer triggered:', entry.target.id, 'isIntersecting:', entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.getAttribute('id');
+                    console.log('Section in view:', sectionId); // Debug log
+                    
+                    // Remove active class from all nav links
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    
+                    // Add active class to corresponding nav link
+                    const activeNavLink = document.querySelector(`.nav__link[href="#${sectionId}"]`);
+                    if (activeNavLink) {
+                        activeNavLink.classList.add('active');
+                        console.log('Activated nav link for:', sectionId); // Debug log
+                    } else {
+                        console.log('No nav link found for section:', sectionId);
+                    }
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '-80px 0px -60% 0px'
+        });
+        
+        // Observe all sections
+        sections.forEach(section => {
+            navObserver.observe(section);
+        });
+        
+        // Enhanced smooth scroll for navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetSection = document.querySelector(href);
+                    if (targetSection) {
+                        const headerOffset = document.querySelector('.header').offsetHeight + 20;
+                        const elementPosition = targetSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active state immediately for better UX
+                        navLinks.forEach(navLink => navLink.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                }
+            });
+        });
+    }
+    
+    // Initialize navigation highlighting
+    initNavigationHighlighting();
+
     // Inicjalizacja kalkulatora wycen
     initPriceCalculator();
 
