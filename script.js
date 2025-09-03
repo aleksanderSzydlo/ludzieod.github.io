@@ -1,5 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    // === INICJALIZACJA EMAILJS ===
+    
+    // Inicjalizacja EmailJS z twoim public key
+    emailjs.init("3qSdcdYGB_F2FxHQv");
+    
+    // Funkcja do wyświetlania powiadomień
+    function showNotification(message, type = 'success') {
+        const bubble = document.getElementById('notification-bubble');
+        const icon = type === 'success' ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-exclamation-triangle"></i>';
+        
+        // Ustawianie treści i typu
+        bubble.innerHTML = `${icon} ${message}`;
+        bubble.className = `notification-bubble ${type}`;
+        
+        // Pokazanie powiadomienia
+        setTimeout(() => {
+            bubble.classList.add('show', 'animate');
+        }, 100);
+        
+        // Ukrycie po 4 sekundach
+        setTimeout(() => {
+            bubble.classList.remove('show');
+        }, 4000);
+        
+        // Usunięcie klas po animacji
+        setTimeout(() => {
+            bubble.classList.remove('animate');
+        }, 4600);
+    }
+
     // === NOWOCZESNE EFEKTY I ANIMACJE ===
     
     // Progress bar dla przewijania
@@ -133,24 +163,64 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Symulacja wysłania formularza
+    // Obsługa formularza kontaktowego z EmailJS
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Pobieranie danych z formularza
             const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
             
-            // Prosta walidacja dla przykładu
-            if (name.trim() === '' || document.getElementById('email').value.trim() === '' || document.getElementById('message').value.trim() === '') {
-                 alert('Proszę wypełnić wszystkie pola formularza.');
-                 return;
+            // Prosta walidacja
+            if (name.trim() === '' || email.trim() === '' || phone.trim() === '' || message.trim() === '') {
+                showNotification('Proszę wypełnić wszystkie pola formularza.', 'error');
+                return;
             }
-
-            // Wyświetlenie komunikatu dla użytkownika
-            alert(`Dziękujemy za wiadomość, ${name}! Skontaktujemy się z Tobą wkrótce.`);
             
-            // Wyczyszczenie formularza
-            contactForm.reset();
+            // Walidacja email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showNotification('Proszę wprowadzić poprawny adres e-mail.', 'error');
+                return;
+            }
+            
+            // Przygotowanie parametrów dla EmailJS
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                message: message,
+                subject: "Wiadomość ze strony",
+                reply_to: email,
+                phone: phone,
+                service: "Ogólne zapytanie",
+                web: "Ludzie od podłóg"
+            };
+            
+            // Pokazanie loadera/spinnera
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Wysyłanie...';
+            submitButton.disabled = true;
+            
+            // Wysłanie emaila przez EmailJS
+            emailjs.send('service_wvhublc', 'template_ypn9c6y', templateParams)
+                .then(function(response) {
+                    console.log('Email wysłany pomyślnie:', response);
+                    showNotification(`Dziękujemy za wiadomość, ${name}! Skontaktujemy się z Tobą wkrótce.`, 'success');
+                    contactForm.reset();
+                }, function(error) {
+                    console.error('Błąd wysyłania emaila:', error);
+                    showNotification('Przepraszamy, wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.', 'error');
+                })
+                .finally(function() {
+                    // Przywrócenie stanu przycisku
+                    submitButton.textContent = originalButtonText;
+                    submitButton.disabled = false;
+                });
         });
     }
 
@@ -809,17 +879,17 @@ function initPriceCalculator() {
 
         // Walidacja danych
         if (selectedServices.length === 0) {
-            alert('Proszę wybrać przynajmniej jedną usługę');
+            showNotification('Proszę wybrać przynajmniej jedną usługę', 'error');
             return;
         }
 
         if (!area || area <= 0) {
-            alert('Proszę wprowadzić poprawną powierzchnię (większą niż 0)');
+            showNotification('Proszę wprowadzić poprawną powierzchnię (większą niż 0)', 'error');
             return;
         }
 
         if (!isValidCity) {
-            alert('Proszę wybrać miasto z listy podpowiedzi');
+            showNotification('Proszę wybrać miasto z listy podpowiedzi', 'error');
             cityInput.focus();
             return;
         }

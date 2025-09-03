@@ -10,6 +10,11 @@
     <title>Ludzie od podłóg - Profesjonalne Usługi Podłogowe</title>
     <meta name="description" content="Specjalizujemy się w panelach winylowych, posadzkach PCV, parkietach, wylewkach samopoziomujących i żywicy. Gwarancja jakości i nowoczesne rozwiązania.">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="Galeria/StronaGlowna/LogoFioletowe.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="Galeria/StronaGlowna/LogoFioletowe.jpg">
+    <link rel="apple-touch-icon" href="Galeria/StronaGlowna/LogoFioletowe.jpg">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -342,10 +347,15 @@
                         <input type="email" id="email" name="email" placeholder="Twój e-mail" required>
                     </div>
                     <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Twój telefon" required>
+                    </div>
+                    <div class="form-group">
                         <textarea id="message" name="message" rows="5" placeholder="Twoja wiadomość" required></textarea>
                     </div>
                     <button type="submit" class="button button--primary">Wyślij wiadomość</button>
                 </form>
+                <!-- Notification bubble -->
+                <div id="notification-bubble" class="notification-bubble"></div>
             </div>
         </section>
     </main>
@@ -365,6 +375,8 @@
         </div>
     </footer>
     
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <!-- Link do pliku JavaScript -->
     <script src="script.js"></script>
 </body>
