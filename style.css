@@ -1626,10 +1626,18 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
+.footer__website {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem 0;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+}
+
 .footer__copyright {
     font-size: 0.9rem;
     opacity: 0.8;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 /* --- Animacje przy przewijaniu --- */
