@@ -1518,6 +1518,54 @@ body {
 }
 
 /* --- Formularz Kontaktowy --- */
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 2rem auto;
+    max-width: 700px;
+    flex-wrap: wrap;
+}
+
+.contact-person {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.contact-person:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+}
+
+.contact-person h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.contact-person p {
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.contact-person a {
+    color: var(--text-medium);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-person a:hover {
+    color: var(--primary-color);
+}
+
 .contact-form {
     max-width: 700px;
     margin: 3rem auto 0 auto;
