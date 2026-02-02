@@ -155,11 +155,18 @@ body {
 
 @media (max-width: 480px) {
     .nav__logo-text {
-        display: none;
+        display: block;
+        font-size: 0.85rem;
+        line-height: 1.2;
+        max-width: 140px;
+    }
+    
+    .nav__logo {
+        gap: 0.5rem;
     }
     
     .nav__logo-img {
-        height: 35px;
+        height: 32px;
     }
     
     .footer__brand {
@@ -176,6 +183,12 @@ body {
         font-size: 1.2rem;
     }
 }
+
+/* Hamburger menu - ukryty na desktop */
+.nav__hamburger {
+    display: none;
+}
+
 .nav__list {
     display: flex;
     list-style: none;
@@ -290,7 +303,8 @@ body {
 /* --- Przyciski --- */
 .button {
     display: inline-block;
-    padding: 0.8rem 2rem;
+    padding: 1rem 2.5rem;
+    min-height: 50px;
     border-radius: var(--border-radius);
     text-decoration: none;
     font-weight: 600;
@@ -303,6 +317,11 @@ body {
     border: none;
     cursor: pointer;
     box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .button::before {
@@ -371,11 +390,15 @@ body {
     .hero__buttons {
         flex-direction: column;
         align-items: center;
+        gap: 1.5rem;
     }
     
     .hero__buttons .button {
         width: 100%;
-        max-width: 280px;
+        max-width: 320px;
+        padding: 1.2rem 2rem;
+        font-size: 1rem;
+        min-height: 60px;
     }
     
     /* Galeria - mobilne dopasowanie */
@@ -1708,35 +1731,106 @@ body {
         min-height: -webkit-fill-available;
     }
     
-    .nav__list {
-        display: flex; /* Zachowujemy flexbox dla przycisku kontakt */
+    /* Nawigacja mobilna */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
     }
     
-    /* Ukrywamy główne linki menu na mobile, ale zostawiamy przycisk kontakt */
-    .nav__item:not(:last-child) {
-        display: none;
-    }
-    
-    /* Zapewniamy, że przycisk kontakt jest zawsze widoczny */
-    .nav__link--button {
-        display: inline-block !important;
-        padding: 0.4rem 1rem; /* Mniejszy padding na mobile */
-        font-size: 0.9rem; /* Mniejszy font na mobile */
-    }
-    
-    /* Dostosowanie marginesów na mobile */
-    .nav__item:last-child {
-        margin-left: 1rem; /* Mniejszy margines na mobile */
-    }
-    
-    /* Dostosowanie logo na mobile */
-    .nav__logo {
-        font-size: 1.3rem; /* Mniejsze logo na mobile */
-    }
-    
-    /* Zmniejszenie wysokości nagłówka na mobile */
     .nav {
-        height: 4rem; /* Mniejsza wysokość na mobile */
+        height: 70px;
+        padding: 0 1rem;
+    }
+    
+    .nav__logo {
+        z-index: 1001;
+        font-size: 1.2rem;
+    }
+    
+    .nav__list {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 2rem 0;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+    }
+    
+    .nav__list.active {
+        left: 0;
+    }
+    
+    .nav__item {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav__link {
+        display: block;
+        padding: 1.2rem 2rem;
+        font-size: 1.1rem;
+        width: 100%;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nav__link--button {
+        margin: 1rem auto;
+        width: 80%;
+        max-width: 300px;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        min-height: 60px;
+    }
+    
+    /* Hamburger menu button */
+    .nav__hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 35px;
+        height: 35px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+        position: relative;
+    }
+    
+    .nav__hamburger span {
+        width: 35px;
+        height: 3px;
+        background: var(--primary-color);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+        position: relative;
+        transform-origin: center;
+    }
+    
+    .nav__hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+    
+    .nav__hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav__hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
     }
     .section__title {
         font-size: 2rem;
@@ -1922,6 +2016,30 @@ body {
     
     .city-validation {
         font-size: 0.7rem;
+    }
+    
+    /* Contact info na mobile */
+    .contact-info {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .contact-person {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+    
+    .contact-person p {
+        font-size: 1rem;
+        padding: 0.8rem 0;
+    }
+    
+    .contact-person a {
+        display: inline-block;
+        min-height: 44px;
+        line-height: 44px;
+        padding: 0 1rem;
     }
     
     .result-additional-item {

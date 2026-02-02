@@ -1,5 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    // === MOBILE NAVIGATION ===
+    const hamburger = document.getElementById('hamburger');
+    const navList = document.getElementById('navList');
+    const navLinks = document.querySelectorAll('.nav__link');
+    
+    // Toggle menu
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navList.classList.toggle('active');
+            document.body.style.overflow = navList.classList.contains('active') ? 'hidden' : '';
+        });
+    }
+    
+    // Close menu when clicking on a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (hamburger && navList) {
+                hamburger.classList.remove('active');
+                navList.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (hamburger && navList) {
+            const isClickInsideNav = navList.contains(event.target);
+            const isClickOnHamburger = hamburger.contains(event.target);
+            
+            if (!isClickInsideNav && !isClickOnHamburger && navList.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navList.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+
     // === INICJALIZACJA EMAILJS ===
     
     // Inicjalizacja EmailJS z twoim public key
